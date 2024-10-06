@@ -1,183 +1,126 @@
 <!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link rel="icon" href="images/logo.png">
-  <meta name="description" content="Minecraft sunucusu için ücretsiz, modern ve hoş bir web şablonu.">
-  <meta name="author" content="Astronawta">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Ana CSS Kuralları */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    <link rel="icon" href="images/logo.png">
+    <meta name="description" content="Minecraft sunucusu için anlık harita görüntüsü.">
+    <meta name="author" content="Astronawta">
 
-    :root {
-      --main-font: 'Inter', sans-serif;
-      --main-color: #39BEFF;
-      --background-color: #24272B;
-      --white-color: #FFFFFF;
-      --black-color: #000000;
-      --description-color: #D2D0D0;
-      --red-color: #FF7C7C;
-    }
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/pages/home.css">
 
-    body {
-      background: var(--background-color);
-      font-family: var(--main-font);
-      color: var(--description-color);
-    }
+    <title>Rage Network | Oyun Haritası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Arka plan rengi */
+            margin: 0;
+            padding: 0;
+        }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 150px;
-      background: var(--background-color);
-      transition: 0.3s ease-in-out;
-    }
+        .navbar {
+            background-color: #007bff; /* Navigasyon arka plan rengi */
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .navbar a {
-      text-decoration: none;
-    }
+        .navbar .links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
 
-    /* Footer */
-    #footer {
-      padding: 20px 150px;
-      display: flex;
-      justify-content: space-between;
-    }
+        .navbar .links a:hover {
+            text-decoration: underline;
+        }
 
-    #footer p {
-      font-size: 17px;
-    }
+        .map-container {
+            width: 100%;
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 20px auto; /* Ortalanmış margin */
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+            text-align: center;
+        }
 
-    /* Başlık Stili */
-    #header {
-      text-align: center;
-      padding: 40px 20px;
-    }
+        h2 {
+            color: #333; /* Başlık rengi */
+        }
 
-    #header .title {
-      font-size: 2.5em;
-      color: var(--white-color);
-      margin-bottom: 10px;
-    }
+        .map-link {
+            display: inline-block;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745; /* Buton rengi */
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
 
-    #header .description {
-      font-size: 1.2em;
-      color: var(--description-color);
-    }
+        .map-link:hover {
+            background-color: #218838; /* Buton hover rengi */
+        }
 
-    /* Harita Bölümü */
-    #map {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .section-title {
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: var(--main-color);
-    }
-
-    /* Buton Stili */
-    .show-map {
-      background-color: var(--main-color);
-      color: var(--white-color);
-      border: none;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    .show-map:hover {
-      background-color: #28a2d0; /* Hover rengi */
-    }
-
-    /* Responsive ayarlar */
-    @media screen and (max-width: 819px) {
-      #header, #map {
-        padding: 20px;
-      }
-
-      #footer {
-        padding: 20px 30px;
-      }
-    }
-  </style>
-  
-  <title>Rage Network | Harita</title>
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-  <!--Navigasyon Menüsü-->
-  <div class="navbar">
-    <div class="menu-mobile">
-      <a href="index.html">
-        <div class="logo">
-          <img src="images/logo.png" alt="Sunucu logosu" class="logo-img">
-          <h3 class="server-name">Rage Network</h3>
+    <!--Navigasyon Menüsü-->
+    <div class="navbar">
+        <div class="menu-mobile">
+            <a href="index.html">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Sunucu logosu" class="logo-img" style="width: 50px;">
+                    <h3 class="server-name">Rage Network</h3>
+                </div>
+            </a>
+
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
-      </a>
-      <div class="hamburger">
-        <i class="fa-solid fa-bars"></i>
-      </div>
+
+        <div class="links">
+            <a href="#" class="link active">Ana Sayfa</a>
+            <a href="rules.html" class="link">Kurallar</a>
+            <a href="admin-team.html" class="link">Admin Takımı</a>
+            <a href="contact.html" class="link">İletişim</a>
+        </div>
     </div>
 
-    <div class="links">
-      <a href="index.html" class="link">Ana Sayfa</a>
-      <a href="map.html" class="link active">Harita</a>
-      <a href="admin-team.html" class="link">Admin Takımı</a>
-      <a href="contact.html" class="link">İletişim</a>
-    </div>
-  </div>
+    <!-- Oyun Haritası -->
+    <section id="map">
+        <div class="map-container">
+            <h2>Oyun Haritası Anlık Görüntüsü</h2>
+            <a href="http://91.197.6.182:30457/" target="_blank" class="map-link">Oyun Haritasına Git</a>
+        </div>
+    </section>
 
-  <!--Başlık-->
-  <section id="header">
-    <div class="content">
-      <div class="info">
-        <p class="minecraft-server-ip">ragenetwork.mine.fun</p>
-        <h1 class="title">Canlı Harita</h1>
-      </div>
-      <p class="description">
-        Sunucunun canlı konumunu görmek için aşağıdaki butona tıklayın.
-      </p>
-    </div>
-  </section>
+    <footer>
+        <div class="content">
+            <p>Rage Network &copy; 2024 Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
 
-  <!--Harita Bölümü-->
-  <section id="map">
-    <div class="content">
-      <h2 class="section-title">Harita Konumunu Göster</h2>
-      <div class="buttons">
-        <a href="https://www.google.com/maps" target="_blank">
-          <button class="show-map">Haritayı Göster</button>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!--Footer-->
-  <footer id="footer">
-    <p class="copyright">&copy; 2024 <span class="server-name-footer">Rage Network</span>. Tüm hakları saklıdır.</p>
-    <div class="social-links">
-      <a href="#" class="link tiktok-link"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="#" class="link instagram-link"><i class="fa-brands fa-square-instagram"></i></a>
-      <a href="#" class="link discord-link-footer"><i class="fa-brands fa-discord"></i></a>
-    </div>
-  </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
 </body>
-<script src="js/script.js"></script>
-<script src="https://kit.fontawesome.com/cbf5ee59c8.js" crossorigin="anonymous"></script>
 </html>
