@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="icon" href="images/logo.png">
@@ -14,30 +14,71 @@
 
     <title>Rage Network | Oyun Haritası</title>
     <style>
-        /* İframe stil ayarları */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Arka plan rengi */
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #007bff; /* Navigasyon arka plan rengi */
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .navbar .links a:hover {
+            text-decoration: underline;
+        }
+
         .map-container {
             width: 100%;
-            height: 600px; /* İstediğiniz yükseklik */
-            overflow: hidden;
-            border: 2px solid #ccc; /* Kenarlık stili */
-            border-radius: 10px; /* Kenar yuvarlama */
-            margin: 20px 0; /* Üst ve alt boşluk */
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 20px auto; /* Ortalanmış margin */
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+            text-align: center;
         }
+
+        h2 {
+            color: #333; /* Başlık rengi */
+        }
+
         .map-link {
-            font-size: 20px;
-            color: #007bff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid #007bff;
+            display: inline-block;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745; /* Buton rengi */
+            padding: 15px 30px;
+            border: none;
             border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            transition: background-color 0.3s;
         }
+
         .map-link:hover {
+            background-color: #218838; /* Buton hover rengi */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
             background-color: #007bff;
             color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -47,7 +88,7 @@
         <div class="menu-mobile">
             <a href="index.html">
                 <div class="logo">
-                    <img src="images/logo.png" alt="Sunucu logosu" class="logo-img">
+                    <img src="images/logo.png" alt="Sunucu logosu" class="logo-img" style="width: 50px;">
                     <h3 class="server-name">Rage Network</h3>
                 </div>
             </a>
@@ -67,17 +108,15 @@
 
     <!-- Oyun Haritası -->
     <section id="map">
-        <h2>Oyun Haritası Anlık Görüntüsü</h2>
         <div class="map-container">
+            <h2>Oyun Haritası Anlık Görüntüsü</h2>
             <a href="http://91.197.6.182:30457/" target="_blank" class="map-link">Oyun Haritasına Git</a>
         </div>
     </section>
 
     <footer>
         <div class="content">
-            <div class="footer-info">
-                <p>Rage Network &copy; 2024 Tüm Hakları Saklıdır.</p>
-            </div>
+            <p>Rage Network &copy; 2024 Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
 
