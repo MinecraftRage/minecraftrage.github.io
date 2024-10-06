@@ -15,73 +15,99 @@
     <title>Rage Network | Oyun Haritası</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4; /* Arka plan rengi */
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef; /* Daha açık bir arka plan rengi */
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Ortalamak için */
         }
 
         .navbar {
-            background-color: #007bff; /* Navigasyon arka plan rengi */
+            background-color: #004085; /* Koyu mavi arka plan */
             padding: 15px;
             color: white;
             display: flex;
             justify-content: space-between;
-            width: 100%;
-            max-width: 1200px; /* Maksimum genişlik */
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Gölge efekti */
         }
 
         .navbar .links a {
             color: white;
             margin-left: 20px;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s; /* Geçiş efekti */
         }
 
         .navbar .links a:hover {
-            color: #ddd; /* Hover rengi */
+            color: #ffcc00; /* Hover rengi */
         }
 
-        h1 {
-            margin: 40px 0; /* Başlık üst boşluğu */
-            color: #333; /* Başlık rengi */
-            text-align: center; /* Başlık ortalı */
+        .map-container {
+            width: 100%;
+            max-width: 1200px; /* Maksimum genişlik */
+            margin: 20px auto; /* Ortalanmış margin */
+            padding: 20px;
+            background: #ffffff; /* Beyaz arka plan */
+            border-radius: 15px; /* Daha yuvarlak köşeler */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Daha belirgin gölge */
+            text-align: center;
+            transition: transform 0.3s; /* Yumuşak geçiş efekti */
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px); /* Hoverda yukarı kaydırma */
+        }
+
+        h2 {
+            color: #343a40; /* Başlık rengi */
+            margin-bottom: 20px; /* Başlık altı boşluk */
         }
 
         .map-link {
             display: inline-block;
-            font-size: 20px;
+            font-size: 20px; /* Daha büyük buton metni */
             color: white;
             background-color: #28a745; /* Buton rengi */
             padding: 15px 30px;
             border: none;
             border-radius: 5px;
             text-decoration: none;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Butona gölge efekti */
-            margin-bottom: 40px; /* Buton alt boşluğu */
+            transition: background-color 0.3s, transform 0.3s; /* Geçiş efektleri */
         }
 
         .map-link:hover {
             background-color: #218838; /* Buton hover rengi */
+            transform: scale(1.05); /* Hoverda biraz büyütme */
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #007bff;
+            background-color: #004085; /* Koyu mavi arka plan */
             color: white;
-            width: 100%;
             position: relative;
             bottom: 0;
+            width: 100%;
+        }
+
+        /* Mobil uyumlu tasarım */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Dikey hizalama */
+            }
+
+            .navbar .links {
+                margin-top: 10px; /* Linkler için üstten boşluk */
+            }
+
+            .map-container {
+                padding: 15px; /* İçerik için daha az boşluk */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigasyon Menüsü -->
+    <!--Navigasyon Menüsü-->
     <div class="navbar">
         <div class="menu-mobile">
             <a href="index.html">
@@ -104,11 +130,13 @@
         </div>
     </div>
 
-    <!-- Başlık -->
-    <h1>Oyun Haritası Anlık Görüntüsü</h1>
-
-    <!-- Harita Bağlantısı -->
-    <a href="http://91.197.6.182:30457/" target="_blank" class="map-link">Oyun Haritasına Git</a>
+    <!-- Oyun Haritası -->
+    <section id="map">
+        <div class="map-container">
+            <h2>Oyun Haritası Anlık Görüntüsü</h2>
+            <a href="http://91.197.6.182:30457/" target="_blank" class="map-link">Oyun Haritasına Git</a>
+        </div>
+    </section>
 
     <footer>
         <div class="content">
